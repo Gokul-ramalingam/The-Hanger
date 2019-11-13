@@ -25,10 +25,18 @@ this.setState({
 
 handleSubmit = (e) =>{
     e.preventDefault();
-    this.setState({
-        email : '',
-        password:''
-    })
+ const {email,password} = this.state;
+    try{
+        auth.signInWithEmailAndPassword(email,password)
+        this.setState({
+            email : '',
+            password:''
+        })
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
 }
 
 render(){
